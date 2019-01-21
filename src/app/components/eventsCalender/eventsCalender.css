@@ -1,0 +1,37 @@
+.width20{
+    width:20%;
+}
+.width60{
+    width:60%;
+}
+.borderTd td{
+    border-bottom:1px dotted grey;
+    padding: 15px;
+}
+.borderTd tr{
+    line-height: 8px;
+}
+.fontSize{
+    font-size:21px;
+}
+.fa-close:hover{
+    color:red;
+}
+.fa-pencil:hover{
+    color:blue;
+}
+.tableOuter{
+    position: relative;
+    margin-top: 22px;
+    margin-left: 50px;
+    margin-right: 50px;
+    border: 1px solid grey;
+    overflow-y: auto;
+    height: 547px;
+}
+.position{
+    position: absolute;
+}
+.fontSizeTable tr{
+    font-size: 18px;
+}

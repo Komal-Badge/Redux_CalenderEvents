@@ -1,0 +1,48 @@
+.leftAlignment{
+    float:left;
+}
+.rightAlignment{
+    float:right;
+}
+.button {
+    background-color: #7cdc9e;
+    border: none;
+    color: white;
+    padding: 5px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.iconSize{
+    font-size: 24px;
+    font-weight: bold;
+}
+.buttonOuter{
+    margin-left: 60px;
+    font-size: 21px;
+    font-weight: bold;
+}
+.width40{
+    width:40%;
+}
+.width45{
+    width:45%;
+}
+.width5{
+    width:5%;
+}
+.headingFont{
+    font-size: 23px;
+}
+.headerSeparater{
+    border-bottom:1px solid grey;
+}
+.hrefDecoration{
+    text-decoration: none;
+    color:white;
+}
+.hideButton{
+    display: none;
+}
