@@ -89,7 +89,7 @@ class EventsCalender extends React.Component<ITimingListProps, any> {
                                     {item.title}
                                 </td>
                                 <td className="width10" >
-                                    <Link to={{ pathname: '/addEvent', param: { "formData": item }, heading: "Update" }}   > <i className="fa fa-pencil fontSize" aria-hidden="true"></i></Link>
+                                    <Link to={{ pathname: '/addEvent', param: { "formData": item }, heading: "Update" ,"id":item.id}}   > <i className="fa fa-pencil fontSize" aria-hidden="true"></i></Link>
                                 </td>
                                 <td className="width10" onClick={() => this.deleteEvent(item.id)}>
                                     <i className="fa fa-close fontSize" aria-hidden="true"></i>

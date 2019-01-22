@@ -7,12 +7,13 @@ import { IProps } from '../container/types/IProps';
 import { Link } from "react-router-dom";
 interface IState {
     formData: any,
-    heading: any
+    heading: any,
+    id: string
 }
 class AddEvent extends React.Component<IProps, IState> {
     constructor(props: any) {
         super(props);
-        this.state = { "formData": props.location.param.formData, "heading": props.location.heading }
+        this.state = { "formData": props.location.param.formData, "heading": props.location.heading, "id": props.location.id }
     }
     componentDidMount = () => {
         let eventList = appStore.getState().name.eventList || [];
@@ -43,16 +44,31 @@ class AddEvent extends React.Component<IProps, IState> {
         endTime = this.state.formData.endTimeHr + ":" + this.state.formData.endTimeMin + " " + this.state.formData.endTime
         let eventList = appStore.getState().name.eventList;
         let currentDate = appStore.getState().name.date;
-        (eventList || []).map((items: any) => {
-            if (currentDate == items.date) {
-                items.events.push({
-                    "id": items.events.length + 1,
-                    "title": this.state.formData.title,
-                    "startTime": startTime,
-                    "endTime": endTime
-                })
-            }
-        });
+        if (this.state.heading == "Update") {
+            (eventList || []).map((items: any) => {
+                if (currentDate == items.date) {
+                    (items.events || []).map((item: any) => {
+                        if (item.id == this.state.id) {
+                            item.id= items.events.length + 1;
+                            item.title= this.state.formData.title;
+                            item.startTime= startTime;
+                            item.endTime= endTime;
+                        }
+                    })
+                }
+            });
+        } else {
+            (eventList || []).map((items: any) => {
+                if (currentDate == items.date) {
+                    items.events.push({
+                        "id": items.events.length + 1,
+                        "title": this.state.formData.title,
+                        "startTime": startTime,
+                        "endTime": endTime
+                    })
+                }
+            });
+        }
         this.props.addEvent({
             eventList: eventList
         });
@@ -130,7 +146,7 @@ class AddEvent extends React.Component<IProps, IState> {
 
                         </div>
                         <div className="col-75">
-                        <Link to={{ pathname: '/' }} className="textDecoration" > <button className="addButton" type="button" onClick={() => this.addEvent()}>{this.state.heading}</button></Link>
+                            <Link to={{ pathname: '/' }} className="textDecoration" > <button className="addButton" type="button" onClick={() => this.addEvent()}>{this.state.heading}</button></Link>
                         </div>
                     </div>
 

@@ -7,8 +7,12 @@ const eventsReducer = (state: any, action: any) => {
     }
     switch (action.type) {
         case ADDEVENT:
-            newState = action.payload.eventList;
-            localStorage.setItem("eventList", JSON.stringify(newState))
+            if (action.payload.eventList) {
+                newState = action.payload.eventList;
+                localStorage.setItem("eventList", JSON.stringify(newState))
+            }else{
+                newState=state;
+            }
             return newState;
         default:
             return state;
